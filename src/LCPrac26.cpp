@@ -18,8 +18,16 @@ class Solution {
 public:
     vector<vector<int>> getSkyline(vector<vector<int>>& buildings) {
         vector<vector<int>> result;
+        if (buildings.empty()) return result;
         result = make_slice(buildings);
+        if (buildings.size() == 1) return result;
         make_peaks(result);
+        int iter = 0;
+        while (iter < result.size())
+        {
+            
+        }
+        
         return result;
     }
 
@@ -27,8 +35,18 @@ private:
     vector<vector<int>> make_slice(vector<vector<int>>& buildings) {
         vector<vector<int>> result;
         vector<int> tmp(2);
+        if (buildings.size() == 1) {
+            tmp[0] = buildings[0][0];
+            tmp[1] = buildings[0][2];
+            result.push_back(tmp);
+            tmp[0] = buildings[0][1];
+            tmp[1] = 0;
+            result.push_back(tmp);
+            return result;
+        }
         for (int i = 0; i < buildings.size(); i++)
         {
+            if (buildings[i][1] > INTMAX || buildings[i][2] > INTMAX) break;
             for (int j = buildings[i][0]; j < buildings[i][1]; j++)
             {
                 tmp[0] = j;
@@ -45,8 +63,8 @@ private:
         tmp[0] = slices.back()[0]+1;
         tmp[1] = 0;
         slices.push_back(tmp);
-        tmp[0]++;
-        slices.push_back(tmp);
+        //tmp[0]++;
+        //slices.push_back(tmp);
         int len = slices.size();
         priority_queue<int> pq;
         pq.push(slices[0][1]);
@@ -58,13 +76,14 @@ private:
                 tmp[1] = pq.top();
                 slices.push_back(tmp);
                 while (!pq.empty()) pq.pop();
-                if (slices[i][0] > pos +1) pq.push(0);
-                else pq.push(slices[i][1]);
-                pos++;
+                pos = slices[i][0];
             }
             pq.push(slices[i][1]);
         }
         slices.erase(slices.begin(), slices.begin() + len);
+        tmp[0] = slices.back()[0] + 1;
+        tmp[1] = 0;
+        slices.push_back(tmp);
     }
 };
 
