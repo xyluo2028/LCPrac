@@ -1,20 +1,35 @@
 # LCPrac
 
-#### Description
-coding practice
+#### TODOS BEFORE RUN
 
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+### 1 Leetcoding till run
 
+## 1.1 review solved problems
 
+## 1.2 categorize problems
 
-#### Gitee Feature
+## 1.3 weekly contest, interview simulation
 
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+### 2 System Design
+
+## 2.1 Finish cource on Leetcode
+
+## 2.2 Review the system in your work experience
+
+## 2.3 Study data base: SQL, NoSql, postgres...
+
+## 2.4 Study middlewares: nginx, redis, kafka...
+
+## 2.5 design pattern (singleton, factory...)
+
+### 3 Update Resume
+
+### 4 Basic CS Knowledge
+
+## 4.1 threads/process, mutex, deadlock, memory, cache...
+
+## 4.2 knowledge on program lang: sharedptr, lambda expressions(C++)
+
+### Speaking Language
+
+## English Interview, If move to Japan, learn some japanese.
