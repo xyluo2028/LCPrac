@@ -30,6 +30,4 @@
 
 ## 4.2 knowledge on program lang: sharedptr, lambda expressions(C++)
 
-### Speaking Language
-
-## English Interview, If move to Japan, learn some japanese.
+## 4.3 Obeject Oriented Programming 
