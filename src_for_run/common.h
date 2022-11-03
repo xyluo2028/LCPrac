@@ -10,5 +10,7 @@
 #include <algorithm>
 #include <list>
 #include <set>
-
+#include <numeric>
+#include <iostream>
+#include <iterator>
 using namespace std;
