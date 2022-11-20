@@ -105,14 +105,14 @@ private:
     MyListNode* tail;
 };
 
-/*
-clean solution using STL list and unordered_map
-class LRUCache {
+
+// clean solution using STL list and unordered_map
+class LRUCache1 {
 public:
     int caps;
     list<pair<int,int>> mylist;
     unordered_map<int,list<pair<int,int>>::iterator> mymap;
-    LRUCache(int capacity) {
+    LRUCache1(int capacity) {
         caps = capacity;
     }
     
@@ -155,4 +155,3 @@ public:
     }
 };
 
- */
