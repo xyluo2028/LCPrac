@@ -1,28 +1,34 @@
 //Minimum Cost to Reach City With Discounts
 #include "common.h"
 
-int minimumCost(int n, vector<vector<int>>& highways, int discounts) {    
-    vector<vector<pair<int, int>>> hsprty(n);
-    for (auto &h : highways) {
-        hs[h[0]].push_back({h[1], h[2]});
-        hs[h[1]].push_back({h[0], h[2]});
-    }
-    vector<vector<int>> costs(n, vector<int>(discounts + 1, INT_MAX));
-    auto cmp = [](const array<int, 3> &a, const array<int, 3> &b) { return a[0] > b[0]; };
-    priority_queue<array<int, 3>, vector<array<int, 3>>, decltype(cmp)> pq(cmp);
-    pq.push({0, discounts, 0});
-    while(!pq.empty() && pq.top()[2] != n - 1) {
-        auto [cost, disc, i] = pq.top(); pq.pop();
-        for (auto [j, toll] : hs[i]) {
-            if (costs[j][disc] > cost + toll) {
-                costs[j][disc] = cost + toll;
-                pq.push({costs[j][disc], disc, j});
-            }
-            if (disc > 0 && costs[j][disc - 1] > cost + toll / 2) {
-                costs[j][disc - 1] = cost + toll / 2;
-                pq.push({costs[j][disc - 1], disc - 1, j});
+class Solution {
+public:
+    int minimumCost(int n, vector<vector<int>>& highways, int discounts) {
+        vector<vector<pair<int, int>>> graph(n);
+        for (auto& vec : highways) {
+            graph[vec[0]].push_back({vec[1], vec[2]});
+            graph[vec[1]].push_back({vec[0], vec[2]});
+        }
+        vector<vector<int>> costs(n, vector<int>(discounts + 1, INT_MAX));
+        auto comp = [&](const array<int, 3>& a, const array<int, 3>& b) {return a[2] > b[2];};
+        priority_queue<array<int, 3>, vector<array<int, 3>>, decltype(comp)> pq(comp);
+        // start point, distconts left, cost
+        pq.push({0, discounts, 0});
+        while (!pq.empty() && pq.top()[0] != n-1) {
+            auto [start, disc, cost] = pq.top();
+            pq.pop();
+            for (auto[dest, toll] : graph[start]) {
+                if (costs[dest][disc] > cost + toll) {
+                    costs[dest][disc] = cost + toll;
+                    pq.push({dest, disc, cost + toll});
+                }
+                if (disc > 0 && costs[dest][disc-1] > cost + toll / 2) {
+                    costs[dest][disc-1] = cost + toll / 2;
+                    pq.push({dest, disc-1, cost + toll/2});
+                }
             }
         }
+        return pq.empty() ? -1 : *min_element(costs[n-1].begin(), costs[n-1].end());
+        
     }
-    return pq.empty() ? -1 : *min_element(begin(costs[n - 1]), end(costs[n - 1]));
-}
+};
